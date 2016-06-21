@@ -5,16 +5,20 @@ xhr.send();
 
 if (xhr.Status !== 200) {
   WScript.Echo("Error downloading node.exe");
-} else {
-  var adoStream = new ActiveXObject('ADODB.Stream');
-  adoStream.Open();
-  adoStream.Type = 1;
-  adoStream.Write(xhr.ResponseBody);
-  adoStream.Position = 0;
-  var fso = new ActiveXObject('Scripting.FileSystemObject');
-  if (fso.FileExists('node.exe')) {
-    fso.DeleteFile('node.exe');
-  }
-  adoStream.SaveToFile('node.exe');
-  adoStream.Close();
+  WScript.Quit(1);
 }
+  
+var adoStream = new ActiveXObject('ADODB.Stream');
+adoStream.Open();
+adoStream.Type = 1;
+adoStream.Write(xhr.ResponseBody);
+adoStream.Position = 0;
+var fso = new ActiveXObject('Scripting.FileSystemObject');
+if (fso.FileExists('node.exe')) {
+  fso.DeleteFile('node.exe');
+}
+adoStream.SaveToFile('node.exe');
+adoStream.Close();
+
+fso.CopyFile('node_modules/npm/bin/npm.cmd', 'npm.cmd');
+
