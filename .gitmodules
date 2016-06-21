@@ -1,0 +1,6 @@
+[submodule "npm"]
+	path = npm
+	url = https://github.com/npm/npm
+[submodule "node_modules/npm"]
+	path = node_modules/npm
+	url = https://github.com/npm/npm
