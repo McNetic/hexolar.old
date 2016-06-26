@@ -1,3 +1,6 @@
-node.exe
-npm.cmd
-node_modules/
+/hexo
+/hexo.cmd
+/node.exe
+/npm.cmd
+/node_modules/
+/projects/
